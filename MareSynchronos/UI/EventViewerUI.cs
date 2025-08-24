@@ -1,4 +1,4 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
@@ -39,7 +39,7 @@ internal class EventViewerUI : WindowMediatorSubscriberBase
 
     public EventViewerUI(ILogger<EventViewerUI> logger, MareMediator mediator,
         EventAggregator eventAggregator, UiSharedService uiSharedService, PerformanceCollectorService performanceCollectorService)
-        : base(logger, mediator, "Event Viewer", performanceCollectorService)
+        : base(logger, mediator, "Sphene Event Viewer", performanceCollectorService)
     {
         _eventAggregator = eventAggregator;
         _uiSharedService = uiSharedService;

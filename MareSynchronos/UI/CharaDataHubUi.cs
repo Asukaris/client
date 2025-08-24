@@ -92,7 +92,7 @@ internal sealed partial class CharaDataHubUi : WindowMediatorSubscriberBase
         _fileDialogManager = fileDialogManager;
         _pairManager = pairManager;
         _charaDataGposeTogetherManager = charaDataGposeTogetherManager;
-        Mediator.Subscribe<GposeStartMessage>(this, (_) => IsOpen |= _configService.Current.OpenMareHubOnGposeStart);
+        Mediator.Subscribe<GposeStartMessage>(this, (_) => IsOpen |= _configService.Current.OpenSpheneHubOnGposeStart);
         Mediator.Subscribe<OpenCharaDataHubWithFilterMessage>(this, (msg) =>
         {
             IsOpen = true;
@@ -863,9 +863,9 @@ internal sealed partial class CharaDataHubUi : WindowMediatorSubscriberBase
 
     private void DrawMcdfExport()
     {
-        _uiSharedService.BigText("Mare Character Data File Export");
+        _uiSharedService.BigText("Sphene Character Data File Export");
 
-        DrawHelpFoldout("This feature allows you to pack your character into a MCDF file and manually send it to other people. MCDF files can officially only be imported during GPose through Mare. " +
+        DrawHelpFoldout("This feature allows you to pack your character into a MCDF file and manually send it to other people. MCDF files can officially only be imported during GPose through Sphene. " +
             "Be aware that the possibility exists that people write unofficial custom exporters to extract the containing data.");
 
         ImGuiHelpers.ScaledDummy(5);
@@ -891,7 +891,7 @@ internal sealed partial class CharaDataHubUi : WindowMediatorSubscriberBase
                     _configService.Current.LastSavedCharaDataLocation = Path.GetDirectoryName(path) ?? string.Empty;
                     _configService.Save();
 
-                    _charaDataManager.SaveMareCharaFile(_exportDescription, path);
+                    _charaDataManager.SaveSpheneCharaFile(_exportDescription, path);
                     _exportDescription = string.Empty;
                 }, Directory.Exists(_configService.Current.LastSavedCharaDataLocation) ? _configService.Current.LastSavedCharaDataLocation : null);
             }
@@ -1048,10 +1048,10 @@ internal sealed partial class CharaDataHubUi : WindowMediatorSubscriberBase
         ImGuiHelpers.ScaledDummy(5);
         _uiSharedService.BigText("Settings");
         ImGuiHelpers.ScaledDummy(5);
-        bool openInGpose = _configService.Current.OpenMareHubOnGposeStart;
+        bool openInGpose = _configService.Current.OpenSpheneHubOnGposeStart;
         if (ImGui.Checkbox("Open Character Data Hub when GPose loads", ref openInGpose))
         {
-            _configService.Current.OpenMareHubOnGposeStart = openInGpose;
+            _configService.Current.OpenSpheneHubOnGposeStart = openInGpose;
             _configService.Save();
         }
         _uiSharedService.DrawHelpText("This will automatically open the import menu when loading into Gpose. If unchecked you can open the menu manually with /sphene gpose");

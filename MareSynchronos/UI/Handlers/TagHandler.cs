@@ -1,15 +1,15 @@
-﻿using MareSynchronos.Services.ServerConfiguration;
+using MareSynchronos.Services.ServerConfiguration;
 
 namespace MareSynchronos.UI.Handlers;
 
 public class TagHandler
 {
-    public const string CustomAllTag = "Mare_All";
-    public const string CustomOfflineTag = "Mare_Offline";
-    public const string CustomOfflineSyncshellTag = "Mare_OfflineSyncshell";
-    public const string CustomOnlineTag = "Mare_Online";
-    public const string CustomUnpairedTag = "Mare_Unpaired";
-    public const string CustomVisibleTag = "Mare_Visible";
+    public const string CustomAllTag = "Sphene_All";
+    public const string CustomOfflineTag = "Sphene_Offline";
+    public const string CustomOfflineSyncshellTag = "Sphene_OfflineSyncshell";
+    public const string CustomOnlineTag = "Sphene_Online";
+    public const string CustomUnpairedTag = "Sphene_Unpaired";
+    public const string CustomVisibleTag = "Sphene_Visible";
     private readonly ServerConfigurationManager _serverConfigurationManager;
 
     public TagHandler(ServerConfigurationManager serverConfigurationManager)

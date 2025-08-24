@@ -1,4 +1,4 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
@@ -486,11 +486,11 @@ public class TopTabMenu
     private void DrawUserConfig(float availableWidth, float spacingX)
     {
         var buttonX = (availableWidth - spacingX) / 2f;
-        if (_uiSharedService.IconTextButton(FontAwesomeIcon.UserCircle, "Edit Mare Profile", buttonX))
-        {
-            _mareMediator.Publish(new UiToggleMessage(typeof(EditProfileUi)));
-        }
-        UiSharedService.AttachToolTip("Edit your Mare Profile");
+        if (_uiSharedService.IconTextButton(FontAwesomeIcon.UserCircle, "Edit Sphene Profile", buttonX))
+            {
+                _mareMediator.Publish(new UiToggleMessage(typeof(EditProfileUi)));
+            }
+            UiSharedService.AttachToolTip("Edit your Sphene Profile");
         ImGui.SameLine();
         if (_uiSharedService.IconTextButton(FontAwesomeIcon.PersonCircleQuestion, "Chara Data Analysis", buttonX))
         {

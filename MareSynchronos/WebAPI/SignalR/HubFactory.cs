@@ -1,4 +1,4 @@
-﻿using MareSynchronos.API.SignalR;
+using MareSynchronos.API.SignalR;
 using MareSynchronos.Services;
 using MareSynchronos.Services.Mediator;
 using MareSynchronos.Services.ServerConfiguration;
