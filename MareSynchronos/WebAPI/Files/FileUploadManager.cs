@@ -1,4 +1,4 @@
-﻿using MareSynchronos.API.Data;
+using MareSynchronos.API.Data;
 using MareSynchronos.API.Dto.Files;
 using MareSynchronos.API.Routes;
 using MareSynchronos.FileCache;
@@ -132,7 +132,12 @@ public sealed class FileUploadManager : DisposableMediatorSubscriberBase
 
     private async Task<List<UploadFileDto>> FilesSend(List<string> hashes, List<string> uids, CancellationToken ct)
     {
-        if (!_orchestrator.IsInitialized) throw new InvalidOperationException("FileTransferManager is not initialized");
+        Logger.LogDebug("FilesSend called - IsInitialized: {isInitialized}, FilesCdnUri: {filesCdnUri}", _orchestrator.IsInitialized, _orchestrator.FilesCdnUri);
+        if (!_orchestrator.IsInitialized) 
+        {
+            Logger.LogError("FileTransferManager is not initialized! FilesCdnUri: {filesCdnUri}", _orchestrator.FilesCdnUri);
+            throw new InvalidOperationException("FileTransferManager is not initialized");
+        }
         FilesSendDto filesSendDto = new()
         {
             FileHashes = hashes,

@@ -1,4 +1,4 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.ImGuiFileDialog;
@@ -79,7 +79,7 @@ internal sealed partial class CharaDataHubUi : WindowMediatorSubscriberBase
                          UiSharedService uiSharedService, ServerConfigurationManager serverConfigurationManager,
                          DalamudUtilService dalamudUtilService, FileDialogManager fileDialogManager, PairManager pairManager,
                          CharaDataGposeTogetherManager charaDataGposeTogetherManager)
-        : base(logger, mediator, "Mare Synchronos Character Data Hub###MareSynchronosCharaDataUI", performanceCollectorService)
+        : base(logger, mediator, "Sphene Character Data Hub###MareSynchronosCharaDataUI", performanceCollectorService)
     {
         SetWindowSizeConstraints();
 
@@ -1054,7 +1054,7 @@ internal sealed partial class CharaDataHubUi : WindowMediatorSubscriberBase
             _configService.Current.OpenMareHubOnGposeStart = openInGpose;
             _configService.Save();
         }
-        _uiSharedService.DrawHelpText("This will automatically open the import menu when loading into Gpose. If unchecked you can open the menu manually with /mare gpose");
+        _uiSharedService.DrawHelpText("This will automatically open the import menu when loading into Gpose. If unchecked you can open the menu manually with /sphene gpose");
         bool downloadDataOnConnection = _configService.Current.DownloadMcdDataOnConnection;
         if (ImGui.Checkbox("Download MCD Online Data on connecting", ref downloadDataOnConnection))
         {

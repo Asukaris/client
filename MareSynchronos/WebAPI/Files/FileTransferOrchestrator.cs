@@ -1,4 +1,4 @@
-﻿using MareSynchronos.MareConfiguration;
+using MareSynchronos.MareConfiguration;
 using MareSynchronos.Services.Mediator;
 using MareSynchronos.WebAPI.Files.Models;
 using MareSynchronos.WebAPI.SignalR;
@@ -35,12 +35,16 @@ public class FileTransferOrchestrator : DisposableMediatorSubscriberBase
 
         Mediator.Subscribe<ConnectedMessage>(this, (msg) =>
         {
+            Logger.LogDebug("ConnectedMessage received, FileServerAddress: {fileServerAddress}", msg.Connection.ServerInfo.FileServerAddress);
             FilesCdnUri = msg.Connection.ServerInfo.FileServerAddress;
+            Logger.LogDebug("FileTransferOrchestrator initialized: {isInitialized}, FilesCdnUri: {filesCdnUri}", IsInitialized, FilesCdnUri);
         });
 
         Mediator.Subscribe<DisconnectedMessage>(this, (msg) =>
         {
+            Logger.LogDebug("DisconnectedMessage received, resetting FilesCdnUri to null");
             FilesCdnUri = null;
+            Logger.LogDebug("FileTransferOrchestrator reset: {isInitialized}, FilesCdnUri: {filesCdnUri}", IsInitialized, FilesCdnUri);
         });
         Mediator.Subscribe<DownloadReadyMessage>(this, (msg) =>
         {
