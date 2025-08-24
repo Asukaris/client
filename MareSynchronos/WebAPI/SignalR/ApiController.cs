@@ -362,11 +362,11 @@ public sealed partial class ApiController : DisposableMediatorSubscriberBase, IM
     public async Task<ConnectionDto> GetConnectionDtoAsync(bool publishConnected)
     {
         var dto = await _mareHub!.InvokeAsync<ConnectionDto>(nameof(GetConnectionDto)).ConfigureAwait(false);
-        Logger.LogDebug("ConnectionDto received - FileServerAddress: {fileServerAddress}, ServerVersion: {serverVersion}, User: {user}", 
+        Logger.LogInformation("[DEBUG] ConnectionDto received - FileServerAddress: {fileServerAddress}, ServerVersion: {serverVersion}, User: {user}", 
             dto.ServerInfo.FileServerAddress, dto.ServerVersion, dto.User.AliasOrUID);
         if (publishConnected) 
         {
-            Logger.LogDebug("Publishing ConnectedMessage with FileServerAddress: {fileServerAddress}", dto.ServerInfo.FileServerAddress);
+            Logger.LogInformation("[DEBUG] Publishing ConnectedMessage with FileServerAddress: {fileServerAddress}", dto.ServerInfo.FileServerAddress);
             Mediator.Publish(new ConnectedMessage(dto));
         }
         return dto;
