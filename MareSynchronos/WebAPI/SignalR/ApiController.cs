@@ -21,8 +21,8 @@ namespace MareSynchronos.WebAPI;
 #pragma warning disable MA0040
 public sealed partial class ApiController : DisposableMediatorSubscriberBase, IMareHubClient
 {
-    public const string MainServer = "Local Test Server (192.168.178.59)";
-    public const string MainServiceUri = "ws://192.168.178.59:6000";
+    public const string MainServer = "Local Test Server (93.210.27.183)";
+    public const string MainServiceUri = "ws://93.210.27.183:6000";
 
     private readonly DalamudUtilService _dalamudUtil;
     private readonly HubFactory _hubFactory;
